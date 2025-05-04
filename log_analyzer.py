@@ -17,5 +17,14 @@ def analyze_logs():
     print(f"- Total entries: {len(logs)}")
     print(f"- Errors detected: {error_count}")
 
+    #Categorizing errors
+    severity = {
+		"CRITICAL" : sum("critical" in line.lower() for line in logs)
+		"WARNING" : sum("warning" in line.lower() for line in logs)
+		}
+    print("\nSeverity Breakdown:")
+    for level,count in severity.items():
+	print(f"- {level}: {count}")
+
 if __name__ == "__main__":
     analyze_logs()

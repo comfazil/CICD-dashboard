@@ -1,4 +1,4 @@
-# 90-DAY DEVOPS MASTERY PLAN WITH DAILY PROJECT STEPS
+		# 90-DAY DEVOPS MASTERY PLAN WITH DAILY PROJECT STEPS
 # Project: AI-Powered CI/CD Analytics Dashboard
 # Root Path: /home/fazilk/Desktop/DevOps
 
