@@ -19,7 +19,7 @@ def analyze_logs():
 
     #Categorizing errors
     severity = {
-		"CRITICAL" : sum("critical" in line.lower() for line in logs)
+		"CRITICAL" : sum("critical" in line.lower() for line in logs),
 		"WARNING" : sum("warning" in line.lower() for line in logs)
 		}
     print("\nSeverity Breakdown:")
