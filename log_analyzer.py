@@ -2,18 +2,20 @@
 import os
 from datetime import datetime
 
-LOG_FILE =os.path.expanduser("/home/fazilk/Desktop/DevOps/project.log")
+LOG_FILE = os.path.expanduser("/home/fazilk/Desktop/DevOps/project.log")
 
 def analyze_logs():
-	if not os.path.exists(LOG_FILE):
-		print("[ERROR] Log file not found")
-		return
-	with open (LOG_FILE, "r") as f:
-		logs = f.readlines()
-	error_count = sum("error" in line.lower() for line in logs)
-	print(f"Log Analysis Report ({datetime.now()}):")
-	print(f"- Total entries: {len(logs)}")
-	print(f"- Errors detected: {error_count}")
+    if not os.path.exists(LOG_FILE):
+        print("[ERROR] Log file not found")
+        return
+
+    with open(LOG_FILE, "r") as f:
+        logs = f.readlines()
+
+    error_count = sum("error" in line.lower() for line in logs)
+    print(f"Log Analysis Report ({datetime.now()}):")
+    print(f"- Total entries: {len(logs)}")
+    print(f"- Errors detected: {error_count}")
 
 if __name__ == "__main__":
-	analyze_logs()
+    analyze_logs()
