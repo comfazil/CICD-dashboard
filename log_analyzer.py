@@ -22,8 +22,8 @@ def analyze_logs():
 		"CRITICAL" : sum("critical" in line.lower() for line in logs),
 		"WARNING" : sum("warning" in line.lower() for line in logs)
 		}
-    print("\nSeverity Breakdown:")
-    for level,count in severity.items():
+    print(f"\nSeverity Breakdown:")
+    for level, count in severity.items():
 	print(f"- {level}: {count}")
 
 if __name__ == "__main__":
