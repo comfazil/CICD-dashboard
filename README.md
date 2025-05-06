@@ -37,24 +37,7 @@ Dockerization
 Built image and a container from that image.
 Executed successfully.
 Current project structure :
-.
-├── cicd-dashboard
-│   ├── apps
-│   │   ├── log_analyzer
-│   │   │   ├── Dockerfile
-│   │   │   ├── log_analyzer.py
-│   │   │   ├── metrics
-│   │   │   │   ├── fetcher.py
-│   │   │   │   └── __pycache__
-│   │   │   │       └── fetcher.cpython-310.pyc
-│   │   │   └── requirements.txt
-│   │   └── logs
-│   │       └── project.log
-│   └── infra
-│       └── terraform
-├── cleanup_logs.sh
-├── devops_master_plan.txt
-└── README.md
+![image](https://github.com/user-attachments/assets/fe4840a8-2663-4199-a213-43503fa8bc40)
 
 
 
