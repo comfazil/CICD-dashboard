@@ -8,14 +8,42 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "../.
 
 from metrics.fetcher import fetch_metrics
 
-LOG_FILE = os.path.expanduser("/home/fazilk/Desktop/DevOps/project.log")
+#LOG_FILE = os.path.expanduser("/home/fazilk/Desktop/DevOps/cicd-dashboard/apps/log_analyzer/logs/project.log")
+
+def get_log_path():
+    """Determine the correct log file location with fallbacks"""
+    # Priority 1: Environment variable
+    if 'LOG_FILE' in os.environ:
+        return os.environ['LOG_FILE']
+    
+    # 2. Sibling 'logs' folder (../logs/project.log) #this path is being used
+    script_dir = os.path.dirname(__file__)
+    sibling_logs_path = os.path.join(script_dir, '../logs/project.log')  # <-- Key change
+    if os.path.exists(sibling_logs_path):
+        return os.path.abspath(sibling_logs_path)  # Convert to absolute path
+    
+    # Priority 3: Development location
+    dev_path = os.path.join(os.path.dirname(__file__), '../../../logs/project.log')
+    if os.path.exists(dev_path):
+        return dev_path
+    
+    # Priority 4: Last resort - current directory
+    return 'project.log'
+
 
 def analyze_logs():
-    if not os.path.exists(LOG_FILE):
-        print("[ERROR] Log file not found")
+    log_file = get_log_path()
+    if not os.path.exists(log_file):
+        print(f"[ERROR] Log file not found at: {log_file}")
+        print("Searched in:")
+        print(f"- Environment LOG_FILE: {os.environ.get('LOG_FILE', 'Not set')}")
+        print(f"- Docker default path: /app/logs/project.log")
+        print(f"- Local logs path: {os.path.join(os.path.dirname(__file__), 'logs/project.log')}")
+        print(f"- Project root path: {os.path.join(os.path.dirname(__file__), '../../../logs/project.log')}")
+        print(f"- Current directory: project.log")
         return
 
-    with open(LOG_FILE, "r") as f:
+    with open(log_file, "r") as f:
         logs = f.readlines()
 
     error_count = sum("error" in line.lower() for line in logs)
