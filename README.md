@@ -33,7 +33,7 @@ Enhanced `log_analyzer.py` to show:
    - Average duration  
 
 ## Day 6:
-Dockerization
+Dockerization.
 Built image and a container from that image.
 Executed successfully.
 Current project structure :
